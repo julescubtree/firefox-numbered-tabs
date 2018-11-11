@@ -1,0 +1,92 @@
+/*
+	via https://www.reddit.com/r/FirefoxCSS/comments/7ihf28/numbered_tabs_nightly/
+*/
+
+@-moz-document url("chrome://browser/content/browser.xul") {
+    #TabsToolbar {
+        counter-reset: numkeyindex;
+    }
+    #TabsToolbar .tabbrowser-tab:-moz-any(:nth-of-type(-n+8), :last-of-type) {
+        counter-increment: numkeyindex;
+    }
+    #TabsToolbar .tabbrowser-tab .tab-content {
+        position: relative;
+    }
+    #TabsToolbar .tabbrowser-tab:-moz-any(:nth-of-type(-n+8), :last-of-type) .tab-content::after {
+        content: counter(numkeyindex);
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 1.2em;
+        width: 1em;
+        opacity: 0.8;
+        text-align: center;
+        pointer-events: none;
+        color: var(--chrome-background-color);
+        background-color: var(--chrome-color);
+    }
+}
+
+/*
+	second version by myfonj
+	slightly more polished
+	https://www.reddit.com/r/FirefoxCSS/comments/7ihf28/numbered_tabs_nightly/drff2sh/
+*/
+/*
+@-moz-document url("chrome://browser/content/browser.xul") {
+    #TabsToolbar {
+        counter-reset: numkeyidx;
+    }
+    #TabsToolbar .tabbrowser-tab:-moz-any(:nth-of-type(-n+8), :last-of-type) {
+        counter-increment: numkeyidx;
+    }
+    #TabsToolbar .tabbrowser-tab .tab-content {
+        position: relative;
+    }
+    #TabsToolbar .tabbrowser-tab:-moz-any(:nth-of-type(-n+8), :last-of-type) .tab-content::after {
+        content: counter(numkeyidx);
+        position: absolute;
+        top: 0;
+        right: 0;
+        line-height: 1.2em;
+        width: 1em;
+        opacity: .6;
+        text-align: center;
+        pointer-events: none;
+        color: var(--chrome-background-color);
+        background-color: var(--chrome-color);
+    }
+    #TabsToolbar .tabbrowser-tab[visuallyselected="true"] .tab-content::after {
+        top: 2px;
+        font-size: smaller;
+        opacity: .3;
+    }
+}
+*/
+/*
+	first version by myfonj
+	super simple, unpolished
+		https://www.reddit.com/r/FirefoxCSS/comments/7ihf28/numbered_tabs_nightly/dqyrdgm/
+*/
+/*
+@-moz-document url("chrome://browser/content/browser.xul") {
+
+    #TabsToolbar {
+        counter-reset: tabs;
+    }
+    #TabsToolbar .tabbrowser-tab:last-of-type,
+    #TabsToolbar .tabbrowser-tab:nth-of-type(-n+8) {
+        counter-increment: tabs;
+        position: relative;
+    }
+    #TabsToolbar .tabbrowser-tab:last-of-type::before,
+    #TabsToolbar .tabbrowser-tab:nth-of-type(-n+8)::before {
+        content: counter(tabs);
+        position: absolute;
+        padding-left: 0.15em;
+        opacity: 1 !important;
+        border-left-color: transparent !important;
+    }
+
+}
+*/
