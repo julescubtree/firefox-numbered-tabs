@@ -2,7 +2,7 @@
 	via https://www.reddit.com/r/FirefoxCSS/comments/7ihf28/numbered_tabs_nightly/
 */
 
-@-moz-document url("chrome://browser/content/browser.xul") {
+@-moz-document url("chrome://browser/content/browser.xhtml") {
     #TabsToolbar {
         counter-reset: numkeyindex;
     }
